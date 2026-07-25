@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 
 from .database import engine, Base, get_db
@@ -17,6 +18,12 @@ Base.metadata.create_all(bind=engine)
 # FastAPI 애플리케이션 생성
 app = FastAPI()
 
+# /media로 요청하면 실제 media 폴더에서 파일을 찾아서 반환
+app.mount(
+    "/media",
+    StaticFiles(directory="media"),
+    name="media"
+)
 
 @app.get("/")
 def root():
