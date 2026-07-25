@@ -1,5 +1,14 @@
+# Python
 __pycache__/
 *.pyc
+
+# 환경변수
 .env
-.vscode/
-.idea/
+
+# SQLite 실제 데이터
+events.db
+
+# 실제 이미지 / 영상
+media/crops/*
+media/trajectories/*
+media/clips/*
