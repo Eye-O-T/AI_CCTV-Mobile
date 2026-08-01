@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Depends
+from datetime import datetime
+
+from fastapi import FastAPI, Depends, Query
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 
@@ -25,6 +27,7 @@ app.mount(
     name="media"
 )
 
+
 @app.get("/")
 def root():
     return {"message": "CCTV API Server"}
@@ -35,7 +38,6 @@ def create_event(
     event: schemas.EventCreate,
     db: Session = Depends(get_db)
 ):
-    # Pydantic 객체 → SQLAlchemy 객체
     db_event = models.Event(
         camera_id=event.camera_id,
         occurred_at=event.occurred_at,
@@ -47,16 +49,27 @@ def create_event(
         clip_video_path=event.clip_video_path
     )
 
-    # DB에 저장
     db.add(db_event)
     db.commit()
     db.refresh(db_event)
 
     return db_event
 
+
 @app.get("/events")
-def get_events(db: Session = Depends(get_db)):
-    # events 테이블의 모든 데이터를 조회
-    events = db.query(models.Event).all()
+def get_events(
+    from_: datetime | None = Query(default=None, alias="from"),
+    to: datetime | None = None,
+    db: Session = Depends(get_db)
+):
+    query = db.query(models.Event)
+
+    if from_ is not None:
+        query = query.filter(models.Event.occurred_at >= from_)
+
+    if to is not None:
+        query = query.filter(models.Event.occurred_at < to)
+
+    events = query.order_by(models.Event.occurred_at.desc()).all()
 
     return events
