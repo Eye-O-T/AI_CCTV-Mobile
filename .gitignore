@@ -1,4 +1,6 @@
+# =========================
 # Python
+# =========================
 __pycache__/
 *.pyc
 
@@ -12,3 +14,33 @@ events.db
 media/crops/*
 media/trajectories/*
 media/clips/*
+
+# =========================
+# Flutter / Dart
+# =========================
+
+# Dart
+.dart_tool/
+.packages
+
+# Flutter
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+
+# Build 결과물
+build/
+
+# IDE
+.idea/
+*.iml
+
+# VSCode (개인 설정)
+.vscode/
+
+# Android
+android/.gradle/
+android/local.properties
+
+# macOS
+.DS_Store
