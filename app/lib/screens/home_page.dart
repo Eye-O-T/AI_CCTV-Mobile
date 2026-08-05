@@ -2,60 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
-  final Widget child;
-
   const HomePage({
     super.key,
     required this.child,
   });
 
+  final Widget child;
+
+  static const List<String> _routes = [
+    '/live',
+    '/history',
+    '/settings',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final String location = GoRouterState.of(context).uri.path;
+    final location = GoRouterState.of(context).uri.path;
 
-    int currentIndex = 0;
-
-    switch (location) {
-      case '/history':
-        currentIndex = 1;
-        break;
-
-      case '/settings':
-        currentIndex = 2;
-        break;
-
-      default:
-        currentIndex = 0;
-    }
+    int currentIndex = _routes.indexOf(location);
+    if (currentIndex == -1) currentIndex = 0;
 
     return Scaffold(
       body: child,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              context.go('/live');
-              break;
-            case 1:
-              context.go('/history');
-              break;
-            case 2:
-              context.go('/settings');
-              break;
-          }
+
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: currentIndex,
+
+        onDestinationSelected: (index) {
+          context.go(_routes[index]);
         },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.videocam),
+
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.videocam_outlined),
+            selectedIcon: Icon(Icons.videocam),
             label: '실시간',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
+          NavigationDestination(
+            icon: Icon(Icons.history_outlined),
+            selectedIcon: Icon(Icons.history),
             label: '히스토리',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            selectedIcon: Icon(Icons.settings),
             label: '설정',
           ),
         ],
