@@ -1,5 +1,5 @@
 import '../models/event.dart';
 
 abstract class EventRepository {
-  Future<List<Event>> getEvents();
+  Future<List<Event>> getEventsByDate(DateTime date);
 }

@@ -12,14 +12,9 @@ final eventsProvider = FutureProvider<List<Event>>((ref) async {
   final repository = ref.watch(eventRepositoryProvider);
   final selectedDate = ref.watch(selectedDateProvider);
 
-  final events = await repository.getEvents();
-
-  return events.where((event) {
-    return event.occurredAt.year == selectedDate.year &&
-        event.occurredAt.month == selectedDate.month &&
-        event.occurredAt.day == selectedDate.day;
-  }).toList();
+  return repository.getEventsByDate(selectedDate);
 });
+
 class SelectedDateNotifier extends Notifier<DateTime> {
   @override
   DateTime build() {
