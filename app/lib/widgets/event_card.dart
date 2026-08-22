@@ -26,14 +26,22 @@ class EventCard extends StatelessWidget {
           children: [
 
             /// 이미지 자리
-            Container(
+            Image.network(
+              'http://10.0.2.2:8000/${event.cropImagePath}',
               width: 90,
               height: 90,
-              color: Colors.grey.shade300,
-              alignment: Alignment.center,
-              child: const Text("Image"),
-            ),
+              fit: BoxFit.cover,
 
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  width: 90,
+                  height: 90,
+                  color: Colors.grey.shade300,
+                  alignment: Alignment.center,
+                  child: const Icon(Icons.broken_image),
+                );
+              },
+            ),
             const SizedBox(width: 16),
 
             /// 정보
