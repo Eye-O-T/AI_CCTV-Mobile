@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../config/api_config.dart';
 import '../models/event.dart';
 
 class EventCard extends StatelessWidget {
@@ -27,11 +27,10 @@ class EventCard extends StatelessWidget {
 
             /// 이미지 자리
             Image.network(
-              'http://10.0.2.2:8000/${event.cropImagePath}',
+              ApiConfig.mediaUrl(event.cropImagePath),
               width: 90,
               height: 90,
               fit: BoxFit.cover,
-
               errorBuilder: (context, error, stackTrace) {
                 return Container(
                   width: 90,
