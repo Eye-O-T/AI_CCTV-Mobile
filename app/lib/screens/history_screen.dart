@@ -26,29 +26,21 @@ class HistoryScreen extends ConsumerWidget {
           Expanded(
             child: eventsAsync.when(
               loading: () {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const Center(child: CircularProgressIndicator());
               },
               error: (error, stackTrace) {
-                return Center(
-                  child: Text('오류: $error'),
-                );
+                return Center(child: Text('오류: $error'));
               },
               data: (events) {
                 if (events.isEmpty) {
-                  return const Center(
-                    child: Text('이벤트가 없습니다.'),
-                  );
+                  return const Center(child: Text('이벤트가 없습니다.'));
                 }
 
                 return ListView.builder(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   itemCount: events.length,
                   itemBuilder: (context, index) {
-                    return EventCard(
-                      event: events[index],
-                    );
+                    return EventCard(event: events[index]);
                   },
                 );
               },

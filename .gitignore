@@ -6,14 +6,21 @@ __pycache__/
 
 # 환경변수
 .env
+*.env
 
 # SQLite 실제 데이터
 events.db
+*.db
+*.sqlite
+*.sqlite3
 
 # 실제 이미지 / 영상
 media/crops/*
 media/trajectories/*
 media/clips/*
+**/media/crops/*
+**/media/trajectories/*
+**/media/clips/*
 
 # =========================
 # Flutter / Dart
@@ -41,6 +48,20 @@ build/
 # Android
 android/.gradle/
 android/local.properties
+google-services.json
+GoogleService-Info.plist
+
+# 인증서 / 비밀키
+secrets/
+*secret*
+*credentials*
+*service-account*
+*adminsdk*
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
 
 # macOS
 .DS_Store

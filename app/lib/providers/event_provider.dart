@@ -6,23 +6,21 @@ import '../repositories/event_repository.dart';
 import '../services/api_client.dart';
 
 final apiClientProvider = Provider<ApiClient>((ref) {
-  return ApiClient(
-    baseUrl: ApiConfig.baseUrl,
-  );
+  return ApiClient(baseUrl: ApiConfig.baseUrl);
 });
 
 final eventRepositoryProvider = Provider<EventRepository>((ref) {
   final apiClient = ref.watch(apiClientProvider);
 
-  return ApiEventRepository(
-    apiClient: apiClient,
-  );
+  return ApiEventRepository(apiClient: apiClient);
 });
 
 class SelectedDateNotifier extends Notifier<DateTime> {
   @override
   DateTime build() {
-    return DateTime(2026, 7, 25);
+    final now = DateTime.now();
+
+    return DateTime(now.year, now.month, now.day);
   }
 
   void selectDate(DateTime date) {
@@ -30,8 +28,7 @@ class SelectedDateNotifier extends Notifier<DateTime> {
   }
 }
 
-final selectedDateProvider =
-NotifierProvider<SelectedDateNotifier, DateTime>(
+final selectedDateProvider = NotifierProvider<SelectedDateNotifier, DateTime>(
   SelectedDateNotifier.new,
 );
 

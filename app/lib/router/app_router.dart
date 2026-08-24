@@ -9,19 +9,13 @@ final appRouter = GoRouter(
   initialLocation: "/live",
 
   routes: [
-
     ShellRoute(
-
       builder: (context, state, child) {
         return HomePage(child: child);
       },
 
       routes: [
-
-        GoRoute(
-          path: "/live",
-          builder: (context, state) => const LiveScreen(),
-        ),
+        GoRoute(path: "/live", builder: (context, state) => const LiveScreen()),
 
         GoRoute(
           path: "/history",
