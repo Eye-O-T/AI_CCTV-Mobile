@@ -1,8 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:app/features/events/presentation/event_history_view_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/event_provider.dart';
 import 'local_notification_service.dart';
 
 class FcmEventCoordinator {

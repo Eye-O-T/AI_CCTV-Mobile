@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../config/api_config.dart';
-import '../models/event.dart';
-import '../repositories/api_event_repository.dart';
-import '../repositories/event_repository.dart';
-import '../services/api_client.dart';
+
+import 'package:app/core/config/api_config.dart';
+import 'package:app/core/network/api_client.dart';
+import 'package:app/features/events/data/api_event_repository.dart';
+import 'package:app/features/events/data/event_repository.dart';
+import 'package:app/features/events/domain/event.dart';
 
 final apiClientProvider = Provider<ApiClient>((ref) {
   return ApiClient(baseUrl: ApiConfig.baseUrl);

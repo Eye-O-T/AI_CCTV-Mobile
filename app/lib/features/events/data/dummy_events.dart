@@ -1,4 +1,4 @@
-import '../models/event.dart';
+import 'package:app/features/events/domain/event.dart';
 
 final List<Event> dummyEvents = List.generate(
   20,

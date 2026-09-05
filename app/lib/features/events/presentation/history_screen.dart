@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/event_provider.dart';
-import '../widgets/event_card.dart';
-import '../widgets/history_date_selector.dart';
+import 'package:app/features/events/presentation/event_card.dart';
+import 'package:app/features/events/presentation/event_history_view_model.dart';
+import 'package:app/features/events/presentation/history_date_selector.dart';
 
 class HistoryScreen extends ConsumerWidget {
   const HistoryScreen({super.key});
