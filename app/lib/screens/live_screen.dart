@@ -5,10 +5,6 @@ class LiveScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("실시간 영상"),
-      ),
-    );
+    return const Scaffold(body: Center(child: Text("실시간 영상")));
   }
 }

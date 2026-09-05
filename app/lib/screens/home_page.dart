@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    super.key,
-    required this.child,
-  });
+  const HomePage({super.key, required this.child});
 
   final Widget child;
 
-  static const List<String> _routes = [
-    '/live',
-    '/history',
-    '/settings',
-  ];
+  static const List<String> _routes = ['/live', '/history', '/settings'];
 
   @override
   Widget build(BuildContext context) {

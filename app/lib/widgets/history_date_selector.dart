@@ -18,7 +18,7 @@ class HistoryDateSelector extends ConsumerWidget {
     // 일요일 ~ 토요일
     final weekDates = List.generate(
       7,
-          (index) => startOfWeek.add(Duration(days: index)),
+      (index) => startOfWeek.add(Duration(days: index)),
     );
 
     return Column(
@@ -31,34 +31,23 @@ class HistoryDateSelector extends ConsumerWidget {
               onPressed: () {
                 ref
                     .read(selectedDateProvider.notifier)
-                    .selectDate(
-                  selectedDate.subtract(
-                    const Duration(days: 7),
-                  ),
-                );
+                    .selectDate(selectedDate.subtract(const Duration(days: 7)));
               },
               icon: const Icon(Icons.chevron_left),
             ),
 
             Text(
               _weekTitle(selectedDate),
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             IconButton(
               onPressed: () {
-                final newDate = selectedDate.add(
-                  const Duration(days: 7),
-                );
+                final newDate = selectedDate.add(const Duration(days: 7));
 
                 debugPrint('기존 날짜: $selectedDate');
                 debugPrint('변경 날짜: $newDate');
 
-                ref
-                    .read(selectedDateProvider.notifier)
-                    .selectDate(newDate);
+                ref.read(selectedDateProvider.notifier).selectDate(newDate);
               },
               icon: const Icon(Icons.chevron_right),
             ),
@@ -71,16 +60,11 @@ class HistoryDateSelector extends ConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: weekDates.map((date) {
-            final isSelected = _isSameDay(
-              date,
-              selectedDate,
-            );
+            final isSelected = _isSameDay(date, selectedDate);
 
             return GestureDetector(
               onTap: () {
-                ref
-                    .read(selectedDateProvider.notifier)
-                    .selectDate(date);
+                ref.read(selectedDateProvider.notifier).selectDate(date);
               },
               child: Column(
                 children: [
@@ -109,9 +93,7 @@ class HistoryDateSelector extends ConsumerWidget {
                   Container(
                     width: 30,
                     height: 3,
-                    color: isSelected
-                        ? Colors.blue
-                        : Colors.transparent,
+                    color: isSelected ? Colors.blue : Colors.transparent,
                   ),
                 ],
               ),
@@ -123,9 +105,7 @@ class HistoryDateSelector extends ConsumerWidget {
   }
 
   bool _isSameDay(DateTime a, DateTime b) {
-    return a.year == b.year &&
-        a.month == b.month &&
-        a.day == b.day;
+    return a.year == b.year && a.month == b.month && a.day == b.day;
   }
 
   String _weekdayName(int weekday) {

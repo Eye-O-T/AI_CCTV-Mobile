@@ -12,3 +12,8 @@ class EventCreate(BaseModel):
     crop_image_path: str
     trajectory_image_path: str
     clip_video_path: str
+
+
+class DeviceTokenCreate(BaseModel):
+    token: str
+    platform: str | None = None
