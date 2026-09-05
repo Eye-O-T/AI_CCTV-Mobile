@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import '../models/event.dart';
-import '../services/api_client.dart';
+import 'package:app/core/network/api_client.dart';
+import 'package:app/features/events/domain/event.dart';
+
 import 'event_repository.dart';
 
 class ApiEventRepository implements EventRepository {

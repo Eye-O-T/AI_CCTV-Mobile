@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'config/api_config.dart';
-import 'router/app_router.dart';
-import 'services/api_client.dart';
-import 'services/fcm_event_coordinator.dart';
-import 'services/local_notification_service.dart';
+import 'package:app/core/config/api_config.dart';
+import 'package:app/core/network/api_client.dart';
+import 'package:app/core/notifications/fcm_event_coordinator.dart';
+import 'package:app/core/notifications/local_notification_service.dart';
+import 'package:app/core/router/app_router.dart';
 
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {

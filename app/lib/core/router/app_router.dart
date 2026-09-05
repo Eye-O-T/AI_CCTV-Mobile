@@ -1,9 +1,10 @@
 import 'package:go_router/go_router.dart';
 
-import '../screens/history_screen.dart';
-import '../screens/home_page.dart';
-import '../screens/live_screen.dart';
-import '../screens/settings_screen.dart';
+import 'package:app/features/events/presentation/history_screen.dart';
+import 'package:app/features/live/presentation/live_screen.dart';
+import 'package:app/features/settings/presentation/settings_screen.dart';
+
+import 'home_page.dart';
 
 final appRouter = GoRouter(
   initialLocation: "/live",

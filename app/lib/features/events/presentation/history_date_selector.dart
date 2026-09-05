@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/event_provider.dart';
+import 'package:app/features/events/presentation/event_history_view_model.dart';
 
 class HistoryDateSelector extends ConsumerWidget {
   const HistoryDateSelector({super.key});
